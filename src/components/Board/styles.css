@@ -1,0 +1,62 @@
+.board {
+  width: 80vmin;
+  height: 80vmin;
+  display: grid;
+  grid-template-rows: repeat(8, 1fr);
+  background: rgb(199, 199, 199);
+}
+
+.board .row {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.tile {
+  position: relative;
+}
+
+
+
+.tile span {
+  user-select: none;
+  position: absolute;
+  top: 0;
+  left: 5px;
+  font-size: 2vmin;
+}
+
+.tile .piece {
+  position: absolute;
+}
+
+.tile.selected {
+  --outline-width: 3px;
+  outline: solid green var(--outline-width);
+  outline-offset: calc(-1 * var(--outline-width));
+}
+
+.tile.possible::after {
+  --circle-size: 45%;
+  content: '';
+  opacity: 50%;
+  position: absolute;
+  display: block;
+  background: green;
+  width: var(--circle-size);
+  height: var(--circle-size);
+  left: calc(50% - var(--circle-size) / 2);
+  top: calc(50% - var(--circle-size) / 2);
+  border-radius: 999px;
+}
+
+.tile.light {
+  background: #c7c7c7;
+}
+
+.tile.dark {
+  background: #864800;
+}
+
+.tile.dark span {
+  color: #efefef;
+}
